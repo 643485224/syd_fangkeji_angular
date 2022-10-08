@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>系统设置 - 管理来访记录</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'" />
+
+  <div padding style="width: 100%; height: 100%;">
+    <div>
+      <fieldset style="width: 100%; height: 168px;">
+        <legend>查询面板</legend>
+        <ion-row>
+          <ion-col style="padding-top: 0px;">
+            <ion-row style="padding: 8px 10px 2px 4px;">
+              <ion-item ion-col>
+                <ion-label color="light">访客姓名</ion-label>
+                <ion-input [(ngModel)]="v_name"></ion-input>
+              </ion-item>
+
+              <ion-item ion-col>
+                <ion-label color="light">员工姓名</ion-label>
+                <ion-input [(ngModel)]="s_name"></ion-input>
+              </ion-item>
+
+              <ion-item ion-col>
+                <ion-label color="light">员工手机</ion-label>
+                <ion-input [(ngModel)]="s_mobile"></ion-input>
+              </ion-item>
+
+              <ion-item ion-col>
+                <ion-label color="light">员工工号</ion-label>
+                <ion-input [(ngModel)]="s_jobNum"></ion-input>
+              </ion-item>
+            </ion-row>
+          </ion-col>
+
+          <ion-col col-auto style="padding-top: 0px;">
+            <button search-btn ion-button icon-start large class="mybtn mybtn-rounded mybtn-raised mybtn-royal"
+              (click)="onQuery($event)">
+              <ion-icon name="find2" color="light"></ion-icon>
+              查询记录
+            </button>
+          </ion-col>
+
+          <ion-col col-auto style="padding-top: 0px;">
+            <button search-btn ion-button icon-start large class="mybtn mybtn-rounded mybtn-raised mybtn-action"
+              (click)="onExport($event)">
+              <ion-icon name="excel" color="light"></ion-icon>
+              导出记录
+            </button>
+          </ion-col>
+        </ion-row>
+      </fieldset>
+    </div>
+
+    <div style="width: 100%; height: calc(100% - 168px);">
+      <ion-row style="height: 74px; padding: 2px 14px;">
+        <button style="padding: 12px 30px; margin-right: 10px;" ion-col col-auto ion-button large
+        (click)="onPageCtrl(1)" [disabled]="pageNum <= 1">上一页</button>
+      <button style="padding: 12px 30px; margin-right: 10px;" ion-col col-auto ion-button large
+        (click)="onPageCtrl(2)" [disabled]="pageNum >= pageMax">下一页</button>
+      <p ion-col style="padding-top: 12px;">当前 {{ pageNum }} / {{ pageMax }} 页，一共 {{ count }} 条来访记录</p>
+
+
+      <ion-item ion-col>
+        <ion-label color="light">来访状态</ion-label>
+        <ion-select [(ngModel)]="state" interface="popover">
+          <ion-option value=0>无</ion-option>
+          <ion-option value=1>在访中</ion-option>
+          <ion-option value=2>已签离</ion-option>
+        </ion-select>
+      </ion-item>
+      
+      <ion-item class="transparent-item" ion-col *ngIf="count && pageMax && pageMax > 0">
+        <ion-label color="light">选择页数</ion-label>
+        <ion-select #selPage [(ngModel)]="pageNum" (ionChange)="onPageChange($event)" okText="跳转" cancelText="取消">
+          <ng-template ngFor let-item [ngForOf]="pageList" let-i="index">
+            <ion-option [value]="i + 1">{{i + 1}}</ion-option>
+          </ng-template>
+        </ion-select>
+      </ion-item>
+      
+      </ion-row>
+
+      <tableview #tableView></tableview>
+    </div>
+  </div>
+</ion-content>

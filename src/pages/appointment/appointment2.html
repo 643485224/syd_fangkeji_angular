@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>预约来访 - 选择来访记录</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'">
+
+  <div xy-center style="height: 100%; padding: 30px 50px 18px; flex-direction: column;">
+    <p style="width: 100%; color: #f53d3d;">系统查询到关于您的多条记录，请选择一条预约记录进行登记操作：</p>
+    <tableview #tableView></tableview>
+  </div>
+</ion-content>

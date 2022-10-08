@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>预约来访 - 输入邀请码</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'">
+
+  <div style="height: calc(100% - 320px); flex-direction: column;" xy-center>
+    <ion-row>
+      <ion-col>
+        <p class="input-label">请输入邀请码:</p>
+
+        <ion-row class="input-code" style="padding: 2px 14px;">
+          <ion-item ion-col>
+            <ion-label color="danger">
+              <ion-icon name="scan"></ion-icon>
+              &nbsp;邀请码
+            </ion-label>
+            <ion-input placeholder="输入邀请码" readonly [(ngModel)]="code"></ion-input>
+          </ion-item>
+
+          <button color="secondary" ion-col col-auto my-btn ion-button (click)="onEnter($event)">确认</button>
+        </ion-row>
+
+        <div xy-center style="flex-direction: row; margin-top: 20px;">
+          <div xy-center style="flex: none; flex-direction: column;">
+            <ion-icon style="font-size: 14rem; color: #0e59a4;" name="swipe-card"></ion-icon>
+            <p class="my-text">&nbsp;支持读取身份证</p>
+          </div>
+
+          <div xy-center style="flex: none; flex-direction: column; margin: 0px 30px;">
+            <ion-icon style="font-size: 14rem; color: #0e59a4;" name="scan"></ion-icon>
+            <p class="my-text">支持扫描二维码</p>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="key-row">
+          <button ion-button class="mybtn mybtn-raised mybtn-action" (click)="onNumDown('1')">1</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-action" (click)="onNumDown('2')">2</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-action" (click)="onNumDown('3')">3</button>
+        </div>
+
+        <div class="key-row">
+          <button ion-button class="mybtn mybtn-raised mybtn-action" (click)="onNumDown('4')">4</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-action" (click)="onNumDown('5')">5</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-action" (click)="onNumDown('6')">6</button>
+        </div>
+
+        <div class="key-row">
+          <button ion-button class="mybtn mybtn-raised mybtn-action" (click)="onNumDown('7')">7</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-action" (click)="onNumDown('8')">8</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-action" (click)="onNumDown('9')">9</button>
+        </div>
+
+        <div class="key-row">
+          <button ion-button class="mybtn mybtn-raised mybtn-action" icon-only (click)="onClean()"
+            style="font-size: 2.8rem;">
+            <ion-icon name="close2"></ion-icon>
+          </button>
+          <button ion-button class="mybtn mybtn-raised mybtn-action" (click)="onNumDown('0')">0</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-action" icon-only (click)="onBackspace()">
+            <ion-icon name="tuige"></ion-icon>
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div class="footer" style="height: 320px;">
+    <fieldset style="width: 100%; background: rgba(250, 250, 255, 0.5);">
+      <legend>帮助信息</legend>
+
+      <div>
+        <p class="mytext">1. 如果您收到了预约(邀请)成功后的二维码，可以直接使用二维码扫码功能进行下一步操作。</p>
+        <p class="mytext">2. 如果您不能扫描二维码，可以通过右侧键盘输入数字邀请码进行下一步操作。</p>
+        <p class="mytext">3. 如果您携带了二代身份证，可以通过直接读取身份证进行下一步操作。</p>
+      </div>
+    </fieldset>
+  </div>
+</ion-content>

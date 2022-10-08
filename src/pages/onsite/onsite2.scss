@@ -1,0 +1,20 @@
+page-onsite2 {
+  .item-md {
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  .button[ion-button] {
+    color: #fff;
+    background: #A8DE49;
+    border-radius: 6px;
+    margin-right: 36px;
+    height: 41px;
+  }
+  .temperat {
+    display: flex;
+    align-items: center;
+    .temperat-text{
+      margin-right: 20px;
+    }
+  }
+}

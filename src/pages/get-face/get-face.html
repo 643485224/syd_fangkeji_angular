@@ -1,0 +1,60 @@
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'">
+
+  <div style="height: calc(100% - 290px); width: 100%; padding: 16px;">
+    <fieldset class="field-info" style="height: 100%; width: 100%; padding: 4px 14px; background: rgba(250, 250, 255, 0.5);">
+      <legend>来访信息</legend>
+      <div xy-center style="flex-direction: column; width: 100%; height: calc(100% - 54px);">
+        <ion-row style="width: 80%;">
+          <ion-col>
+            <p>姓名:
+              <b>{{info.name}}</b>
+            </p>
+            <p>性别:
+              <b>{{info.sex}}</b>
+            </p>
+            <p>证件号码:
+              <b>{{info.credNum}}</b>
+            </p>
+          </ion-col>
+
+          <ion-col>
+            <p>被访人姓名:
+              <b>{{info.isv_name}}</b>
+            </p>
+            <p>被访人部门:
+              <b>{{info.isv_deptName}}</b>
+            </p>
+            <p>来访事由:
+              <b>{{info.reason}}</b>
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <div class="btn-area">
+          <button ion-button color="secondary" class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn icon-start
+            [disabled]="!blEnable" (click)="onClick($event)">
+            <ion-icon name="zhuapai3"></ion-icon>
+            开始抓拍人脸
+          </button>
+          <p style="font-size: 2.0rem; color: #f53d3d;">&nbsp;&nbsp;&nbsp;&nbsp;请确认访客信息无误后开始抓拍。</p>
+        </div>
+      </div>
+
+    </fieldset>
+
+  </div>
+
+  <div class="footer" style="height: 290px;">
+    <fieldset style="padding: 4px 14px; width: 100%; background: rgba(250, 250, 255, 0.5);">
+      <legend>注意事项</legend>
+
+      <div>
+        <p>1. 请先阅读本段说明，确认无误后，点击上方按钮开始正式抓拍人脸。</p>
+        <p>2. 抓拍人脸时，请正视摄像头，保持人脸在面部框中。</p>
+        <p>3. 请保证视频画面内的人物图像真实有效，避免存在过多的遮挡。</p>
+        <p>4. 请保证画面内最多出现一张人脸。</p>
+      </div>
+    </fieldset>
+  </div>
+</ion-content>

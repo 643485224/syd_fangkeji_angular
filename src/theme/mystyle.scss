@@ -1,0 +1,324 @@
+.bg-picture {
+  position: absolute;
+  z-index: -10;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  background-color: #60BCFF;
+  background-attachment: fixed;
+}
+
+body .no-scroll .scroll-content {
+  overflow: hidden;
+}
+
+body [no-scroll] .scroll-content {
+  overflow: hidden;
+}
+
+body [y-scroll] {
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+}
+
+body [blur-msg-box] {
+  border: 2px solid #888;
+  border-radius: 8px;
+  padding: 24px;
+  background: rgba(230, 230, 250, 0.5);
+}
+
+body .fix-toolbar-btn {
+  width: 8rem;
+  text-align: center;
+}
+
+.fix-nz-alert {
+  .ant-notification-notice-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .ant-notification-notice-icon {
+    font-size: 60px;
+    line-height: 60px;
+  }
+
+  .ant-notification-notice-message {
+    margin-left: 100px !important;
+    font-size: 24px !important;
+  }
+
+  .ant-notification-notice-description {
+    margin-left: 100px !important;
+    font-size: 20px !important;
+  }
+
+  .ant-notification-notice-close {
+    right: 14px;
+    top: 10px;
+  }
+
+  .ant-notification-notice-close-x:after {
+    font-size: 24px !important;
+  }
+}
+
+.fix-nz-modal {
+  max-width: 680px;
+
+  .ant-modal-body {
+    padding: 22px !important;
+
+    .ant-confirm-body>.anticon {
+      color: #ffb20c;
+      font-size: 72px;
+      min-height: 72px;
+    }
+
+    .ant-confirm-body .ant-confirm-title {
+      font-size: 28px;
+      line-height: 34px;
+    }
+
+    .ant-confirm-body .ant-confirm-content {
+      font-size: 24px;
+    }
+
+    .ant-confirm-btns {
+      display: none;
+    }
+  }
+
+}
+
+[block] {
+  display: block;
+}
+
+[no-padding] {
+  padding: 0px !important;
+}
+
+[no-margin] {
+  margin: 0px !important;
+}
+
+[full-width] {
+  display: block;
+  width: 100%;
+}
+
+[x-full] {
+  width: 100%;
+}
+
+[y-full] {
+  height: 100%;
+}
+
+[xy-full] {
+  width: 100%;
+  height: 100%;
+}
+
+[x-center] {
+  display: flex;
+  align-items: center;
+}
+
+[y-center] {
+  display: flex;
+  justify-content: center;
+}
+
+[xy-center] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+[flex-column] {
+  flex-direction: column;
+}
+
+[lg2-btn] {
+  height: 10rem !important;
+  font-size: 4rem !important;
+  padding: 0 3.2rem !important;
+}
+
+[lg-btn] {
+  height: 8rem !important;
+  font-size: 3rem !important;
+  padding: 0 2.8rem !important;
+}
+
+[lg-font] {
+  font-size: 3.4rem;
+}
+
+[close-button] {
+  padding: 4px 4px !important;
+  line-height: 64px !important;
+  height: 64px !important;
+  width: 70px !important;
+}
+
+[close-icon] {
+  padding-top: 1px !important;
+  line-height: 64px !important;
+  height: 64px !important;
+  width: 64px !important;
+  color: #ffffff !important;
+  font-size: 40px !important;
+}
+
+[disabled-mouse] {
+  pointer-events: none;
+}
+
+ion-app fieldset {
+  border: 2px double rgb(20, 81, 109); //border: 0;
+  padding: 8px 20px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+ion-app fieldset .fieldset-content {
+  display: flex;
+  height: calc(100% - 52px);
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+ion-app fieldset legend {
+  width: auto;
+  height: 52px;
+  padding: 5px 10px;
+  margin-bottom: 0.5rem;
+  background-color: #5875B0;
+  color: #FFF;
+  border-radius: 1px;
+  font-size: 2.8rem;
+  box-shadow: 2px 2px 4px #888;
+}
+
+.footer {
+  position: absolute;
+  padding: 16px;
+  left: 0px;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+.alert-mybtn {
+  background-color: #4cb0f9 !important;
+  font-size: 2.6rem !important;
+  color: #fff !important;
+}
+
+.alert-mybtn:active {
+  background-color: #277fbd !important;
+}
+
+.myspinner ion-spinner {
+  width: 50px !important;
+  height: 50px !important;
+  margin-top: 12px !important;
+}
+
+body .transparent-item {
+  padding-left: 0px;
+  background-color: transparent !important;
+}
+
+.alert-radio-group {
+  max-height: 300px !important;
+}
+
+.alert-radio-group::-webkit-scrollbar {
+  //border: 1px solid #444;
+  border-right: 1px solid #444;
+  border-bottom: 1px solid #444;
+  width: 18px;
+  background-color: rgba(250, 250, 250, 0.1);
+}
+
+.alert-radio-group::-webkit-scrollbar-track {
+  background: rgba(220, 220, 200, 0.6); //border: 1px ridge #888;
+  border-right: 1px solid #444;
+}
+
+.alert-radio-group::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: linear-gradient(to left, rgb(102, 182, 250), rgb(198, 234, 252));
+  border: 1px solid #686868;
+  background-color: #D62929;
+}
+
+.alert-radio-group::-webkit-scrollbar-thumb:hover {
+  border-color: #000;
+}
+
+.alert-radio-group::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(to right, rgb(22, 104, 167), rgb(53, 161, 214));
+}
+
+body [fix-row] {
+  margin: 0px;
+}
+
+body .new-btn {
+  text-align: center;
+  font-size: 4rem;
+  color: #FFF;
+  border-radius: 8px;
+  border: 1px solid #BBB;
+  position: relative;
+  text-shadow: 0px 0px 5px rgba(60, 29, 24, 0.9);
+  box-shadow: 0 1px 3px 1px #444;
+}
+
+body .new-btn:after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  border-radius: 8px;
+  background: -webkit-gradient(linear, left -20%, 0% bottom, from(rgba(255, 255, 255, 0.35)), color-stop(0.55, rgba(255, 255, 255, 0.15)), color-stop(0.55, rgba(255, 255, 255, 0)));
+}
+
+body .new-btn:active {
+  box-shadow: 0 0px 3px 4px #DDD;
+  background: linear-gradient(180deg, #CCC, #888);
+}
+
+body .new-btn-reflect {
+  -webkit-box-reflect: below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(40%, transparent), color-stop(80%, rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.5)));
+}
+
+body .new-btn-bg1 {
+  background: linear-gradient(180deg, #ffb162, #f37a4e);
+}
+
+body .new-btn-bg2 {
+  background: linear-gradient(180deg, #c753f9, #705cd8);
+}
+
+body .new-btn-bg3 {
+  background: linear-gradient(180deg, #5f7eee, #0f37c8);
+}
+
+body .new-btn-bg4 {
+  background: linear-gradient(180deg, #9ad824, #6b9e0c);
+}

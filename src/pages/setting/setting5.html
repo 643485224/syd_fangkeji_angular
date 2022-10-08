@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>系统设置 - 证件识别配置</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding no-scroll>
+  <fieldset>
+    <legend>证件识别配置</legend>
+
+    <ion-row>
+      <ion-item ion-col>
+        <ion-label>OCR摄像头水平镜像</ion-label>
+        <ion-toggle [(ngModel)]="ocr_mirror"></ion-toggle>
+      </ion-item>
+
+      <!--
+      <ion-item ion-col>
+        <ion-label>使能读取电子护照</ion-label>
+        <ion-toggle [(ngModel)]="enable_epp"></ion-toggle>
+      </ion-item>
+      -->
+    </ion-row>
+  </fieldset>
+
+  <div class="footer">
+    <button ion-button icon-start lg2-btn class="mybtn mybtn-rounded mybtn-raised mybtn-royal" (click)="onSave($event)">
+      <ion-icon name="save" color="light"></ion-icon>
+      保存本页设置
+    </button>
+  </div>
+</ion-content>

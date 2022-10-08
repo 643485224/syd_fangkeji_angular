@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>系统设置 - 人证比对配置</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <!--
+  <img class="bg-picture" [src]="bgurl | safe: 'url'">
+  -->
+
+  <div style="width: 100%; height: 100%" padding>
+    <fieldset>
+      <legend>人证比对参数</legend>
+
+      <ion-item>
+        <ion-label color="primary">比对通过阈值</ion-label>
+        <ion-input readonly color="danger" [value]="limit"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-range min="50" max="95" snaps="true" [(ngModel)]="limit">
+          <ion-label range-left>50</ion-label>
+          <ion-label range-right>95</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <div style="display: block; margin-top: 12px;"></div>
+
+      <ion-item>
+        <ion-label color="primary">识别区域裁剪宽度</ion-label>
+        <ion-input readonly color="danger" value="{{cutWidth}}px"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-range [min]="minCutWidth" [max]="maxCutWidth" step="10" snaps="true" [(ngModel)]="cutWidth">
+          <ion-label range-left>{{minCutWidth}}</ion-label>
+          <ion-label range-right>{{maxCutWidth}}</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <div style="display: block; margin-top: 12px;"></div>
+
+      <ion-item>
+        <ion-label color="primary">识别区域裁剪高度</ion-label>
+        <ion-input readonly color="danger" value="{{cutHeight}}px"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-range [min]="minCutHeight" [max]="maxCutHeight" step="10" snaps="true" [(ngModel)]="cutHeight">
+          <ion-label range-left>{{minCutHeight}}</ion-label>
+          <ion-label range-right>{{maxCutHeight}}</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <div style="display: block; margin-top: 12px;"></div>
+
+      <ion-item>
+        <ion-label color="primary">人脸图片质量</ion-label>
+        <ion-input readonly color="danger" value="{{faceQuality}}%"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-range min="50" max="100" snaps="true" [(ngModel)]="faceQuality">
+          <ion-label range-left>50</ion-label>
+          <ion-label range-right>100</ion-label>
+        </ion-range>
+      </ion-item>
+
+      <div style="display: block; margin-top: 12px;"></div>
+
+      <ion-row fix-row>
+        <ion-item ion-col>
+          <ion-label color="primary">启用扣人脸模式</ion-label>
+          <ion-toggle [(ngModel)]="enableOnlyFace" (ionChange)="onFaceChange($event)"></ion-toggle>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="primary">启用人脸图片缩放</ion-label>
+          <ion-toggle [disabled]="!enableOnlyFace" [(ngModel)]="enableFaceRange"></ion-toggle>
+        </ion-item>
+      </ion-row>
+
+      <ion-item>
+        <ion-label color="{{enableFaceRange ? 'primary' : 'invalid'}}">缩放宽度范围</ion-label>
+        <ion-input [disabled]="!enableFaceRange" readonly color="danger"
+          value="{{faceRange.lower}}px ~ {{faceRange.upper}}px"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-range [disabled]="!enableFaceRange" min="300" max="500" step="10" dualKnobs="true" snaps="true"
+          [(ngModel)]="faceRange">
+          <ion-label color="{{enableFaceRange ? 'dark' : 'invalid'}}" range-left>300</ion-label>
+          <ion-label color="{{enableFaceRange ? 'dark' : 'invalid'}}" range-right>500</ion-label>
+        </ion-range>
+      </ion-item>
+    </fieldset>
+  </div>
+
+  <div class="footer">
+    <button ion-button icon-start lg2-btn class="mybtn mybtn-rounded mybtn-raised mybtn-royal" (click)="onSave($event)">
+      <ion-icon name="save" color="light"></ion-icon>
+      保存本页设置
+    </button>
+  </div>
+</ion-content>

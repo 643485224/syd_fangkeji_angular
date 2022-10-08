@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>预约来访 - 抓拍人脸</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <ion-nav #pageNav [root]="rootPage" [rootParams]="rootParams"></ion-nav>
+</ion-content>

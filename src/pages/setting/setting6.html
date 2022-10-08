@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>系统设置 - 设备配置</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding no-scroll>
+  <fieldset>
+    <legend>多打印机配置</legend>
+
+    <ion-row>
+      <ion-item ion-col>
+        <ion-label>打印机1: </ion-label>
+        <ion-select [(ngModel)]="printer1">
+          <ng-template ngFor let-item [ngForOf]="devices">
+            <ion-option [value]="item">{{item}}</ion-option>
+          </ng-template>
+        </ion-select>
+      </ion-item>
+
+      <button ion-col col-auto ion-button large (click)="onPrint(1)">测试打印机</button>
+    </ion-row>
+
+    <ion-row>
+      <ion-item ion-col>
+        <ion-label>打印机2: </ion-label>
+        <ion-select [(ngModel)]="printer2">
+          <ng-template ngFor let-item [ngForOf]="devices">
+            <ion-option [value]="item">{{item}}</ion-option>
+          </ng-template>
+        </ion-select>
+      </ion-item>
+
+      <button ion-col col-auto ion-button large (click)="onPrint(2)">测试打印机</button>
+    </ion-row>
+
+    <ion-row>
+      <ion-item ion-col>
+        <ion-label>打印机3: </ion-label>
+        <ion-select [(ngModel)]="printer3">
+          <ng-template ngFor let-item [ngForOf]="devices">
+            <ion-option [value]="item">{{item}}</ion-option>
+          </ng-template>
+        </ion-select>
+      </ion-item>
+
+      <button ion-col col-auto ion-button large (click)="onPrint(3)">测试打印机</button>
+    </ion-row>
+
+    <ion-row>
+      <ion-item ion-col>
+        <ion-label>打印机4: </ion-label>
+        <ion-select [(ngModel)]="printer4">
+          <ng-template ngFor let-item [ngForOf]="devices">
+            <ion-option [value]="item">{{item}}</ion-option>
+          </ng-template>
+        </ion-select>
+      </ion-item>
+
+      <button ion-col col-auto ion-button large (click)="onPrint(4)">测试打印机</button>
+    </ion-row>
+  </fieldset>
+
+  <div class="footer">
+    <button ion-button icon-start lg2-btn class="mybtn mybtn-rounded mybtn-raised mybtn-royal" (click)="onSave($event)">
+      <ion-icon name="save" color="light"></ion-icon>
+      保存本页设置
+    </button>
+  </div>
+</ion-content>

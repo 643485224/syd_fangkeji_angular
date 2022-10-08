@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>系统设置 - 工厂测试2</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <fieldset>
+    <legend>功能测试</legend>
+
+    <button ion-button icon-start large (click)="btnPrintTest0_onClick($event)">
+      <ion-icon name="print"></ion-icon>
+      测试打印
+    </button>
+
+    <button ion-button icon-start large (click)="btnPrintTest1_onClick($event)">
+      <ion-icon name="print"></ion-icon>
+      测试打印表单
+    </button>
+
+    <button ion-button icon-start large (click)="btnPrintTest10_onClick($event)">
+      <ion-icon name="print"></ion-icon>
+      测试打印 10次
+    </button>
+
+    <button ion-button icon-start large (click)="btnPrintTest11_onClick($event)">
+      <ion-icon name="print"></ion-icon>
+      测试打印表单 10次
+    </button>
+
+    <button ion-button icon-start large (click)="btnPrintTest2_onClick($event)">
+      <ion-icon name="print"></ion-icon>
+      测试打印 (多打印机)
+    </button>
+
+    <button ion-button icon-start large (click)="btnPrintTest3_onClick($event)">
+      <ion-icon name="print"></ion-icon>
+      测试打印表单 (多打印机)
+    </button>
+
+    <button ion-button icon-start large (click)="btnPrintTest12_onClick($event)">
+      <ion-icon name="print"></ion-icon>
+      测试打印 10次 (多打印机)
+    </button>
+
+    <button ion-button icon-start large (click)="btnPrintTest13_onClick($event)">
+      <ion-icon name="print"></ion-icon>
+      测试打印表单 10次 (多打印机)
+    </button>
+
+    <button ion-button icon-start large (click)="btnTaskTest_onClick($event)">
+      <ion-icon name="test"></ion-icon>
+      测试任务回调
+    </button>
+
+    <button ion-button icon-start large (click)="btnTestUi_onClick($event)">
+      <ion-icon name="test"></ion-icon>
+      测试提示
+    </button>
+  </fieldset>
+
+  <div style="width: 100%;">
+    <p>{{strText}}</p>
+    <img [src]="dataUrl | safe : 'url'" />
+  </div>
+</ion-content>

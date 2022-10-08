@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>系统设置 - 工厂测试1</ion-title>
+    <ion-buttons right style="padding: 0px 16px 0px 12px;">
+      <button ion-button only-icon (click)="onConsoleClick()">
+        <ion-icon name="console" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <fieldset>
+    <legend>功能测试</legend>
+
+    <button ion-button icon-start large (click)="btnExcelTest_onClick($event)">
+      <ion-icon name="excel2"></ion-icon>
+      测试导出Excel
+    </button>
+
+    <button ion-button icon-start large (click)="btnDbInsTest_onClick($event)" [disabled]="stateDb">
+      <ion-icon name="sql"></ion-icon>
+      测试数据库插入
+    </button>
+
+    <button ion-button icon-start large (click)="btnDbQuyTest_onClick($event)" [disabled]="stateDb">
+      <ion-icon name="sql"></ion-icon>
+      测试数据库查询
+    </button>
+
+    <button ion-button icon-start large (click)="btnDbQuyAllTest_onClick($event)" [disabled]="stateDb">
+      <ion-icon name="sql"></ion-icon>
+      测试数据库查询全部
+    </button>
+
+    <button ion-button icon-start large (click)="btnDbDelTest_onClick($event)" [disabled]="stateDb">
+      <ion-icon name="sql"></ion-icon>
+      测试数据库删除
+    </button>
+
+    <button ion-button icon-start large (click)="btnDbInsRecord_onClick($event)" [disabled]="stateDb">
+      <ion-icon name="sql"></ion-icon>
+      测试插入脱机来访记录 (500条)
+    </button>
+
+    <button ion-button icon-start large (click)="btnDbCheckout_onClick($event)" [disabled]="stateDb">
+      <ion-icon name="sql"></ion-icon>
+      测试签离脱机来访记录
+    </button>
+
+    <button ion-button icon-start large (click)="btnDbInsOnlineRecord_onClick($event)" [disabled]="stateDb">
+      <ion-icon name="sql"></ion-icon>
+      测试插入联机来访记录 (200条)
+    </button>
+
+    <button ion-button icon-start large (click)="btnDbInsStaff_onClick($event)" [disabled]="stateDb">
+      <ion-icon name="sql"></ion-icon>
+      测试插入员工数据 (500条)
+    </button>
+
+    <button ion-button icon-start large (click)="btnDbDelStaff_onClick($event)" [disabled]="stateDb">
+      <ion-icon name="sql"></ion-icon>
+      删除测试员工数据
+    </button>
+
+    <button ion-button icon-start large (click)="btnDbDelRecord_onClick($event)" [disabled]="stateDb">
+      <ion-icon name="sql"></ion-icon>
+      删除测试来访记录数据
+    </button>
+
+    <button ion-button icon-start large (click)="btnCapOcr_onClick($event)" [disabled]="stateOcr">
+      <ion-icon name="test"></ion-icon>
+      OCR摄像头抓拍
+    </button>
+
+    <button ion-button icon-start large (click)="btnOcrIdTest_onClick($event)" [disabled]="stateOcr">
+      <ion-icon name="test"></ion-icon>
+      测试OCR身份证
+    </button>
+
+    <button ion-button icon-start large (click)="btnOcrPpTest_onClick($event)" [disabled]="stateOcr">
+      <ion-icon name="test"></ion-icon>
+      测试OCR护照
+    </button>
+
+    <button ion-button icon-start large (click)="btnOcrJzTest_onClick($event)" [disabled]="stateOcr">
+      <ion-icon name="test"></ion-icon>
+      测试OCR驾驶证
+    </button>
+
+    <button ion-button icon-start large (click)="btnReadPpTest_onClick($event, 1)" [disabled]="stateOcr">
+      <ion-icon name="test"></ion-icon>
+      读取电子护照 (先OCR护照)
+    </button>
+
+    <button ion-button icon-start large (click)="btnReadPpTest_onClick($event, 10)" [disabled]="stateOcr">
+      <ion-icon name="test"></ion-icon>
+      读取电子护照10次 (先OCR护照)
+    </button>
+
+    <button ion-button icon-start large (click)="btnFaceTest_onClick($event)">
+      <ion-icon name="test"></ion-icon>
+      测试抓拍人脸
+    </button>
+
+    <button ion-button icon-start large (click)="btnGetHwInfo_onClick($event)">
+      <ion-icon name="test"></ion-icon>
+      测试获取硬件信息
+    </button>
+
+    <button ion-button icon-start large (click)="btnTestSpeak_onClick($event)">
+      <ion-icon name="test"></ion-icon>
+      测试播放语音提示 (10次)
+    </button>
+
+    <button ion-button icon-start large (click)="btnTestIc_onClick($event)">
+      <ion-icon name="test"></ion-icon>
+      写入RFIC卡
+    </button>
+
+    <button ion-button icon-start large (click)="btntemperature_onClick($event)">
+      <ion-icon name="test"></ion-icon>
+      测试体温
+    </button>
+  </fieldset>
+
+  <div style="width: 100%;">
+    <p>{{strText}}</p>
+    <img [src]="dataUrl | safe : 'url'" />
+  </div>
+</ion-content>

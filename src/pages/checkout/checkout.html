@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>访客签离</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'">
+
+  <div xy-center style="height: 100%; flex-direction: column;">
+    <div xy-center style="flex-direction: row; margin-top: 20px;">
+      <div xy-center style="flex: none; flex-direction: column;">
+        <ion-icon style="font-size: 14rem; color: #0e59a4;" name="swipe-card"></ion-icon>
+        <p class="my-text">&nbsp;支持读取身份证</p>
+      </div>
+
+      <div xy-center style="flex: none; flex-direction: column; margin: 0px 30px;">
+        <ion-icon style="font-size: 14rem; color: #0e59a4;" name="scan"></ion-icon>
+        <p class="my-text">支持扫描二维码</p>
+      </div>
+    </div>
+    <p style="color: #f53d3d">访客可以使用二代证或者凭条进行签离操作！</p>
+  </div>
+</ion-content>

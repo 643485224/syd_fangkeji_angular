@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>欢迎使用 - 访客自助登记系统</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'" />
+
+  <div xy-full xy-center style="flex-direction: column;">
+    <p class="title">欢迎使用自助访客登记系统。</p>
+    <p class="title">系统检测到这是第一次使用，请先进行系统配置。</p>
+    <p class="title">&nbsp;</p>
+    <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action"
+      lg2-btn color="secondary" (click)="onSetting()">
+      <ion-icon name="shouzhi1"></ion-icon>
+      &nbsp;立即配置系统参数
+    </button>
+  </div>
+
+</ion-content>

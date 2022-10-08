@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>系统设置</ion-title>
+
+    <ion-buttons right>
+      <!-- 界面版本: {{ web_ver }} &nbsp;&nbsp; 软件版本: {{ soft_ver }} &nbsp;&nbsp; -->
+      版本：V{{ web_ver }}.{{ soft_ver }} &nbsp;&nbsp;
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'" />
+
+  <div style="height: 100%; flex-direction: column;" xy-center>
+    <ion-row justify-content-center>
+      <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn color="secondary"
+        (click)="onEnterSetup(1)">
+        <ion-icon name="network"></ion-icon>
+        &nbsp;&nbsp;模式配置
+      </button>
+
+      <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn color="secondary"
+        (click)="onEnterSetup(2)">
+        <ion-icon name="key2"></ion-icon>
+        &nbsp;&nbsp;修改密码
+      </button>
+
+      <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn color="secondary"
+        (click)="onEnterSetup(3)">
+        <ion-icon name="theme"></ion-icon>
+        &nbsp;&nbsp;主题配置
+      </button>
+    </ion-row>
+
+    <ion-row>
+      <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn color="secondary"
+        (click)="onEnterSetup(4)">
+        <ion-icon name="zhuapai2"></ion-icon>
+        &nbsp;&nbsp;人证比对配置
+      </button>
+
+      <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn color="secondary"
+        (click)="onEnterSetup(5)">
+        <ion-icon name="ocr2"></ion-icon>
+        &nbsp;&nbsp;证件识别配置
+      </button>
+
+      <!--
+      <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn color="secondary"
+        (click)="onEnterSetup(6)">
+        <ion-icon name="device2"></ion-icon>
+        &nbsp;&nbsp;设备配置
+      </button>
+      -->
+
+      <button [hidden]="!bStyle" ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn
+        color="secondary" (click)="onEnterSetup(11)">
+        <ion-icon name="style3"></ion-icon>
+        &nbsp;&nbsp;凭条样式
+      </button>
+    </ion-row>
+
+    <ion-row>
+      <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn color="secondary"
+        (click)="onEnterSetup(12)">
+        <ion-icon name="shezhi3"></ion-icon>
+        &nbsp;&nbsp;杂项配置
+      </button>
+
+      <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn color="secondary"
+        (click)="onEnterSetup(8)">
+        <ion-icon name="excel"></ion-icon>
+        &nbsp;&nbsp;管理员工数据
+      </button>
+
+      <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn color="secondary"
+        (click)="onEnterSetup(9)">
+        <ion-icon name="excel"></ion-icon>
+        &nbsp;&nbsp;管理访客记录
+      </button>
+    </ion-row>
+
+    <ion-row>
+      <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn color="secondary"
+        (click)="onEnterSetup(7)">
+        <ion-icon name="test3"></ion-icon>
+        &nbsp;&nbsp;工厂测试1
+      </button>
+
+      <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn color="secondary"
+        (click)="onEnterSetup(10)">
+        <ion-icon name="test3"></ion-icon>
+        &nbsp;&nbsp;工厂测试2
+      </button>
+
+      <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-caution" lg2-btn color="danger"
+        (click)="onExit()">
+        <ion-icon name="logout"></ion-icon>
+        &nbsp;&nbsp;退出应用
+      </button>
+    </ion-row>
+  </div>
+
+</ion-content>

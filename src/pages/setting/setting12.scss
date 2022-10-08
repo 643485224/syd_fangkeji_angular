@@ -1,0 +1,12 @@
+page-setting12 {
+  $background-color: #e0e8f0;
+
+  .content-md {
+    background-color: $background-color !important;
+  }
+
+  .item-md {
+    padding-left: 0px;
+    background-color: transparent !important;
+  }
+}

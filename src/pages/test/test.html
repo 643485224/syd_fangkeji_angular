@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>登记并打印凭条</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'">
+
+  <div y-scroll>
+    <div style="flex-direction: column; color: #888;" xy-center>
+      <div xy-center flex-column blur-msg-box>
+        <img style="display: block; object-fit: contain;" width="180" height="180" src="assets/imgs/success.png">
+        <p style="margin: 1rem 0; color: #338; font-weight: bold;">访客登记成功，请取凭条！</p>
+        <button ion-button icon-start class="mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn color="secondary"
+          (click)="onGoBack()">
+          <ion-icon name="shouzhi1"></ion-icon>
+          &nbsp;返回首页
+        </button>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

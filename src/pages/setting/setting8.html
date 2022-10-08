@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>系统设置 - 管理员工数据</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'" />
+
+  <div padding style="width: 100%; height: 100%;">
+    <fieldset style="height: 168px;">
+      <legend>管理面板</legend>
+
+      <ion-row>
+        <ion-col style="padding-top: 0px;">
+          <ion-row style="padding: 0px 10px 2px 14px;">
+            <ion-item ion-col>
+              <ion-label color="light">姓名</ion-label>
+              <ion-input [(ngModel)]="strName" maxlength="20"></ion-input>
+            </ion-item>
+
+            <ion-item ion-col>
+              <ion-label color="light">手机</ion-label>
+              <ion-input [(ngModel)]="strPhone" maxlength="20"></ion-input>
+            </ion-item>
+
+            <ion-item ion-col>
+              <ion-label color="light">工号</ion-label>
+              <ion-input [(ngModel)]="strJobNum" maxlength="20"></ion-input>
+            </ion-item>
+          </ion-row>
+        </ion-col>
+
+        <ion-col col-auto style="padding-top: 0px;">
+          <button search-btn ion-button icon-start large class="mybtn mybtn-rounded mybtn-raised mybtn-royal"
+            (click)="onQuery($event)">
+            <ion-icon name="find2" color="light"></ion-icon>
+            搜索
+          </button>
+        </ion-col>
+
+        <ion-col col-auto style="padding-top: 0px;">
+          <button color="secondary" ion-button icon-start large class="mybtn mybtn-rounded mybtn-raised mybtn-action"
+            (click)="btnExportTpl_onClick($event)">
+            导出模板
+          </button>
+        </ion-col>
+
+        <ion-col col-auto style="padding-top: 0px;">
+          <button ion-button icon-start large class="mybtn mybtn-rounded mybtn-raised mybtn-primary"
+            (click)="btnImport_onClick($event)" [disabled]="stateIns">
+            导入数据
+          </button>
+        </ion-col>
+
+        <ion-col col-auto style="padding-top: 0px;">
+          <button ion-button icon-start large class="mybtn mybtn-rounded mybtn-raised mybtn-primary"
+            (click)="btnExport_onClick($event)" [disabled]="stateQuy">
+            导出数据
+          </button>
+        </ion-col>
+
+        <ion-col col-auto style="padding-top: 0px;">
+          <button ion-button icon-start large class="mybtn mybtn-rounded mybtn-raised mybtn-caution"
+            (click)="btnDelAll_onClick($event)" [disabled]="stateQuy">
+            删除全部
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <p style="font-size: 1.6rem; color: red;">
+        导入注意：请将员工数据表文件复制到内部存储根目录下，文件名设为“<b>员工数据表.xls</b>”，注意区分大小写。然后点击<b>导入数据</b>。</p>
+    </fieldset>
+
+    <div style="width: 100%; height: calc(100% - 168px);">
+      <ion-row style="height: 74px; padding: 2px 14px;">
+        <button style="padding: 12px 30px; margin-right: 10px;" ion-col col-auto ion-button large
+          (click)="onPageCtrl(1)" [disabled]="pageNum <= 1">上一页</button>
+
+        <button style="padding: 12px 30px; margin-right: 10px;" ion-col col-auto ion-button large
+          (click)="onPageCtrl(2)" [disabled]="pageNum >= pageMax">下一页</button>
+
+        <p ion-col style="padding-top: 12px;">当前 {{ pageNum }} / {{ pageMax }} 页，一共 {{ count }} 条员工数据</p>
+
+        <ion-item class="transparent-item" ion-col *ngIf="count && pageMax && pageMax > 0">
+          <ion-label color="light">选择页数</ion-label>
+          <ion-select #selPage [(ngModel)]="pageNum" (ionChange)="onPageChange($event)" okText="跳转" cancelText="取消">
+            <ng-template ngFor let-item [ngForOf]="pageList" let-i="index">
+              <ion-option [value]="i + 1">{{i + 1}}</ion-option>
+            </ng-template>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+
+      <tableview #tableView></tableview>
+    </div>
+  </div>
+</ion-content>

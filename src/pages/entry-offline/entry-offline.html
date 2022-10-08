@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="onSetup($event)">
+        <ion-icon name="setup" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title (tap)="startFn($event)">访客自助登记系统</ion-title>
+
+    <ion-buttons right>
+      {{ text }} &nbsp;&nbsp;
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'" />
+
+  <div x-center style="height: calc(100% - 240px); flex-direction: column; padding-top: 80px;">
+    <div style="height: 12rem;">
+      <p class="title">
+        <b>欢迎使用自助访客登记系统</b>
+      </p>
+      <p class="title">&nbsp;</p>
+    </div>
+    <div style="height: calc(100% - 12rem); display: flex; align-items: center;">
+      <button ion-button icon-start class="new-btn new-btn-bg2 mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn
+        color="secondary" style="margin-right: 100px;" (click)="onCheckin($event)">
+        <ion-icon name="checkin2"></ion-icon>
+        &nbsp;访客登记
+      </button>
+      <button ion-button icon-start class="new-btn new-btn-bg2 mybtn mybtn-rounded mybtn-raised mybtn-action" lg2-btn
+        color="secondary" (click)="onCheckout($event)">
+        <ion-icon name="checkout"></ion-icon>
+        &nbsp;访客签离
+      </button>
+    </div>
+  </div>
+
+  <div class="footer" style="height: 240px;">
+    <fieldset style="width: 100%; background: rgba(250, 250, 255, 0.5);">
+      <legend>帮助信息</legend>
+
+      <div class="fieldset-content" style="font-size: 3rem;">
+        <p class="mytext">
+          1. 如果您需要访问人员，请选择
+          <ion-icon name="checkin2" style="color: #19812f;">
+            <b>访客登记</b>
+          </ion-icon>
+          完善您的访客信息。</p>
+        <p class="mytext">
+          2. 如果您已访问完毕，请选择
+          <ion-icon name="checkout" style="color: #19812f;">
+            <b>访客签离</b>
+          </ion-icon>
+          注销本次来访。</p>
+      </div>
+    </fieldset>
+  </div>
+</ion-content>

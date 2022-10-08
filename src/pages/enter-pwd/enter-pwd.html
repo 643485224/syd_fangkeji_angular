@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <ion-icon name="key4" color="danger"></ion-icon>
+    </ion-buttons>
+    <ion-title>
+      &nbsp;{{title}}
+    </ion-title>
+    <ion-buttons right>
+      <button close-button ion-button (click)="onClose($event)">
+        <ion-icon close-icon class="mybtn-rounded mybtn-raised mybtn-caution" name="close3"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll style="width: 610px;">
+  <div style="padding: 20px; padding-top: 4px;">
+    <ion-row style="padding: 6px 20px;">
+      <ion-col>
+        <ion-item (click)="onTextClick(1)">
+          <ion-label [color]="clr1">管理密码</ion-label>
+          <ion-input placeholder="输入密码" type="password" maxlength="8" readonly [(ngModel)]="pwd1"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col col-auto>
+        <button class="confirm-button mybtn mybtn-rounded mybtn-raised mybtn-action" ion-button outline color="secondary"
+          (click)="onConfirm()">确认</button>
+      </ion-col>
+    </ion-row>
+
+    <ion-label class="prompt" color="danger" (click)="prompt = ''">{{prompt}}</ion-label>
+
+    <div class="key-row">
+      <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('1')">1</button>
+      <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('2')">2</button>
+      <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('3')">3</button>
+      <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('0')">0</button>
+    </div>
+
+    <div class="key-row">
+      <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('4')">4</button>
+      <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('5')">5</button>
+      <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('6')">6</button>
+      <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only (click)="onBackspace()">
+        <ion-icon name="tuige"></ion-icon>
+      </button>
+    </div>
+
+    <div class="key-row">
+      <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('7')">7</button>
+      <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('8')">8</button>
+      <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('9')">9</button>
+      <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only (click)="onClean()" style="font-size: 2.8rem;">
+        <ion-icon name="close2"></ion-icon>
+      </button>
+    </div>
+
+  </div>
+</ion-content>

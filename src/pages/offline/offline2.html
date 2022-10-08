@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>访客登记 - 确认访客信息</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'">
+
+  <div x-center padding style="height: calc(100% - 140px); flex-direction: column;">
+    <fieldset style="width: 100%; background: rgba(250, 250, 255, 0.5);">
+      <legend>完善访客信息</legend>
+
+      <ion-row style="width: 100%;">
+        <ion-item ion-col>
+          <ion-label color="danger">姓名</ion-label>
+          <ion-input [(ngModel)]="strName" maxlength="20"></ion-input>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="danger">性别</ion-label>
+          <ion-select [(ngModel)]="numSex" interface="popover">
+            <ion-option [value]="0">未知</ion-option>
+            <ion-option [value]="1">男</ion-option>
+            <ion-option [value]="2">女</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="danger">证件号码</ion-label>
+          <ion-input [(ngModel)]="strCardNum" maxlength="30"></ion-input>
+        </ion-item>
+      </ion-row>
+
+      <ion-row style="width: 100%;">
+        <ion-item ion-col *ngIf="globalSvr.field_phone">
+          <ion-label [color]="globalSvr.field_phone ? 'danger' : 'primary'">手机号码</ion-label>
+          <ion-input [(ngModel)]="strPhone" maxlength="20" type="tel"></ion-input>
+        </ion-item>
+
+        <ion-item ion-col *ngIf="globalSvr.field_reason">
+          <ion-label [color]="globalSvr.field_reason ? 'danger' : 'primary'">来访事由</ion-label>
+          <ion-select [(ngModel)]="strReason" interface="popover">
+            <ion-option value="浏览参观">浏览参观</ion-option>
+            <ion-option value="拜访人员">拜访人员</ion-option>
+            <ion-option value="商务洽谈">商务洽谈</ion-option>
+            <ion-option value="参加会议">参加会议</ion-option>
+            <ion-option value="求职面试">求职面试</ion-option>
+            <ion-option value="快递外卖">快递外卖</ion-option>
+            <ion-option value="其它">其它</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item ion-col *ngIf="globalSvr.field_platenum">
+          <ion-label [color]="globalSvr.field_platenum ? 'danger' : 'primary'">车牌号码</ion-label>
+          <ion-input [(ngModel)]="strPlateNum" maxlength="20"></ion-input>
+        </ion-item>
+      </ion-row>
+
+      <ion-row>
+        <ion-item ion-col *ngIf="globalSvr.field_company">
+          <ion-label [color]="globalSvr.field_company ? 'danger' : 'primary'">访客单位</ion-label>
+          <ion-input [(ngModel)]="strCompany" maxlength="50"></ion-input>
+        </ion-item>
+
+        <ion-item ion-col *ngIf="globalSvr.enable_temperature">
+          <ion-label class="temperat" [color]="globalSvr.enable_temperature ? 'danger' : 'primary'">
+            <span class="temperat-text">检测体温</span><span class="temperat-text">{{temperature}}</span>
+            <button ion-button  (click)="detect($event)" *ngIf="globalSvr.enable_SYD_K3A">获取体温 </button>
+          </ion-label>
+        </ion-item>
+
+      </ion-row>
+
+    </fieldset>
+
+  </div>
+
+  <div class="footer" style="height: 140px;">
+    <button ion-button icon-start lg2-btn class="mybtn mybtn-rounded mybtn-raised mybtn-action" (click)="onOK($event)">
+      <ion-icon name="shouzhi1" color="light"></ion-icon>
+      下一步
+    </button>
+  </div>
+</ion-content>

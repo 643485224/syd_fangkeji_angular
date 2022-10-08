@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <ion-icon name="setup2"></ion-icon>
+    </ion-buttons>
+    <ion-title>
+      &nbsp;初始设置 - {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll style="width: 600px;">
+  <div [ngSwitch]="step" style="padding: 20px; padding-top: 4px;">
+    <div *ngSwitchCase="1">
+      <ion-row style="padding: 6px 20px;">
+        <ion-col>
+          <ion-item (click)="onTextClick(1)">
+            <ion-label [color]="clr1">管理密码</ion-label>
+            <ion-input placeholder="输入密码" type="password" readonly [(ngModel)]="pwd1"></ion-input>
+          </ion-item>
+
+          <ion-item (click)="onTextClick(2)">
+            <ion-label [color]="clr2">确认密码</ion-label>
+            <ion-input placeholder="再次输入" type="password" readonly [(ngModel)]="pwd2"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-auto>
+          <button class="confirm-button mybtn mybtn-raised mybtn-action" ion-button color="secondary" (click)="onConfirm(1)">确认</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-label class="prompt" color="danger" (click)="prompt = ''">{{prompt}}</ion-label>
+
+      <div class="key-row">
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('1')">1</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('2')">2</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('3')">3</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('0')">0</button>
+      </div>
+
+      <div class="key-row">
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('4')">4</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('5')">5</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('6')">6</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only (click)="onBackspace()">
+          <ion-icon name="tuige"></ion-icon>
+        </button>
+      </div>
+
+      <div class="key-row">
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('7')">7</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('8')">8</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('9')">9</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only (click)="onClean()" style="font-size: 2.8rem;">
+          <ion-icon name="close2"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="2">
+      <ion-row style="padding: 6px 20px;">
+        <ion-col>
+          <ion-item (click)="onTextClick(3)">
+            <ion-label [color]="clr1">
+              <ion-icon name="config-ip" color="secondary"></ion-icon>
+              &nbsp;IP地址
+            </ion-label>
+            <ion-input placeholder="平台IP地址" readonly [(ngModel)]="ip"></ion-input>
+          </ion-item>
+
+          <ion-item (click)="onTextClick(4)">
+            <ion-label [color]="clr2">
+              <ion-icon name="port" color="secondary"></ion-icon>
+              &nbsp;端&nbsp;&nbsp;&nbsp;&nbsp;口
+            </ion-label>
+            <ion-input placeholder="平台端口号" readonly [(ngModel)]="port"></ion-input>
+          </ion-item>
+
+          <ion-item (click)="onTextClick(5)">
+            <ion-label [color]="clr3">
+              <ion-icon name="code1" color="secondary"></ion-icon>
+              &nbsp;注册码
+            </ion-label>
+            <ion-input placeholder="设备注册码" readonly [(ngModel)]="regcode"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-auto>
+          <button class="confirm-button mybtn mybtn-raised mybtn-action" ion-button color="secondary" (click)="onConfirm(2)">确认</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-label class="prompt" color="danger" (click)="prompt = ''">{{prompt}}</ion-label>
+
+      <div class="key-row">
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('1')">1</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('2')">2</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('3')">3</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('0')">0</button>
+      </div>
+
+      <div class="key-row">
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('4')">4</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('5')">5</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('6')">6</button>
+
+        <div *ngIf="keyMode === 1; then thenBlock1; else elseBlock1"></div>
+        <ng-template #thenBlock1>
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only (click)="onNumDown('.')">.</button>
+        </ng-template>
+        <ng-template #elseBlock1>
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only (click)="onBackspace()">
+            <ion-icon name="tuige"></ion-icon>
+          </button>
+        </ng-template>
+      </div>
+
+      <div class="key-row">
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('7')">7</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('8')">8</button>
+        <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('9')">9</button>
+        <div *ngIf="keyMode === 1; then thenBlock2; else elseBlock2"></div>
+        <ng-template #thenBlock2>
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only (click)="onBackspace()">
+            <ion-icon name="tuige"></ion-icon>
+          </button>
+        </ng-template>
+        <ng-template #elseBlock2>
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only (click)="onClean()" style="font-size: 2.8rem;">
+            <ion-icon name="close2"></ion-icon>
+          </button>
+        </ng-template>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="3">
+      <div xy-center style="height: 140px;">
+        <ion-row>
+          <ion-icon ion-col col-auto style="margin-top: 4px;" name="queding" color="secondary"></ion-icon>
+          <p style="margin-left: 20px;" ion-col>设置参数成功! ({{time}})</p>
+        </ion-row>
+      </div>
+    </div>
+  </div>
+</ion-content>

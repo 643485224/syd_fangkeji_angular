@@ -1,0 +1,151 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>系统设置 - 杂项配置</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'" />
+
+  <div style="width: 100%; height: 100%" padding>
+    <fieldset style="background: rgba(255, 255, 255, 0.4);">
+      <legend>自定义访客机重启时间</legend>
+      <ion-row style="width: 100%;">
+        <ion-item ion-col>
+          <ion-label>
+            <ion-label color="primary" style="margin-left: 3rem;">
+              选择星期
+            </ion-label>
+          </ion-label>
+          <ion-input [value]='pickerVal' color="primary" (click)="openPickerCard()" [(ngModel)]="pickerVal" readonly>
+          </ion-input>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label>
+            <ion-label color="primary" style="margin-left: 3rem;">
+              重启时间
+            </ion-label>
+          </ion-label>
+          <ion-datetime displayFormat=" HH:mm:ss" [(ngModel)]="restartTime"></ion-datetime>
+        </ion-item>
+
+        <button search-btn ion-button icon-start large class="mybtn mybtn-rounded mybtn-raised mybtn-royal"
+          (click)="onReason()">
+          <ion-icon name="test"></ion-icon>
+          添加重启时间
+        </button>
+
+        <ion-item ion-col>
+          <ion-label color="primary">启用定时重启</ion-label>
+          <ion-toggle [(ngModel)]="enable_restart"></ion-toggle>
+        </ion-item>
+      </ion-row>
+      <ion-row style="padding: 6px 20px; margin: 0.5rem 1rem;">
+
+      </ion-row>
+      <button ion-button icon-start large (click)="onRemove(i)" [disabled]="stateDb"
+        *ngFor="let item of Task,let i = index">
+        <ion-icon name="sql"></ion-icon>
+        {{Task[i].week}}/{{Task[i].endTime}}
+      </button>
+    </fieldset>
+
+    <fieldset style="background: rgba(255, 255, 255, 0.4);">
+      <legend>访客登记模式设置</legend>
+
+      <ion-row style="padding: 6px 20px; margin: 0.5rem 1rem;">
+        <ion-item ion-col>
+          <ion-label color="primary">启用'现场登记'</ion-label>
+          <ion-toggle [(ngModel)]="enable_onsite"></ion-toggle>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="primary">启用'被访人选择'</ion-label>
+          <ion-toggle [(ngModel)]="enable_visitor"></ion-toggle>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="primary">启用'打印凭条'</ion-label>
+          <ion-toggle [(ngModel)]="enable_print"></ion-toggle>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="primary">启用'无证登记'</ion-label>
+          <ion-toggle [(ngModel)]="enable_undocumented"></ion-toggle>
+        </ion-item>
+      </ion-row>
+
+      <ion-row style="padding: 6px 20px; margin: 0.5rem 1rem;">
+
+        <ion-item ion-col>
+          <ion-label color="dark">串口配置</ion-label>
+          <ion-input placeholder="地址形如'/dev/ttyACM0'" maxlength="32" [(ngModel)]="com"></ion-input>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="primary">启用'CRT发卡'</ion-label>
+          <ion-toggle [(ngModel)]="CRT591"></ion-toggle>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="primary">启用'检测体温'</ion-label>
+          <ion-toggle [(ngModel)]="enable_temperature"></ion-toggle>
+        </ion-item>
+        <ion-item ion-col>
+          <div *ngIf="enable_temperature">
+            <ion-label color="primary">使用'DY033-T1A测温仪'</ion-label>
+            <ion-toggle [(ngModel)]="enable_SYD_K3A"></ion-toggle>
+          </div>
+        </ion-item>
+        
+        <ion-item ion-col>
+         
+        </ion-item>
+      </ion-row>
+      <!-- <ion-item ion-col>
+          <ion-label color="primary">启用'通用图标'</ion-label>
+          <ion-toggle [(ngModel)]="enable_commonlogo"></ion-toggle>
+        </ion-item> -->
+      <!-- </ion-row> -->
+    </fieldset>
+
+    <fieldset style="background: rgba(255, 255, 255, 0.4);">
+      <legend>访客登记必填字段设置</legend>
+
+      <ion-row style="padding: 6px 20px; margin: 0.5rem 1rem;">
+        <ion-item ion-col>
+          <ion-label color="primary">访客手机</ion-label>
+          <ion-toggle [(ngModel)]="field_phone"></ion-toggle>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="primary">来访事由</ion-label>
+          <ion-toggle [(ngModel)]="field_reason"></ion-toggle>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="primary">车牌号码</ion-label>
+          <ion-toggle [(ngModel)]="field_platenum"></ion-toggle>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="primary">访客单位</ion-label>
+          <ion-toggle [(ngModel)]="field_company"></ion-toggle>
+        </ion-item>
+      </ion-row>
+    </fieldset>
+  </div>
+
+  <div class="footer">
+    <button ion-button icon-start lg2-btn class="mybtn mybtn-rounded mybtn-raised mybtn-royal" (click)="onSave($event)">
+      <ion-icon name="save" color="light"></ion-icon>
+      保存本页设置
+    </button>
+  </div>
+</ion-content>

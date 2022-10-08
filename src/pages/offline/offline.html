@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>访客登记 - 请选择证件类型</ion-title>
+    <ion-buttons right style="padding: 0px 16px 0px 12px;" *ngIf="globalSvr.enable_undocumented">
+      <button ion-button only-icon (click)="onOcrClick($event, 6)">
+        <ion-icon name="idcard2" color="primary"></ion-icon>
+        无证登记
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'">
+
+  <div xy-center padding style="height: calc(100% - 210px); flex-direction: column;">
+    <div style="margin-bottom: 10px;">
+      <p style="width: 100%; color: #f53d3d; margin-bottom: 16px;">请选择要识别的证件类型：</p>
+
+      <button style="width: 500px; height: 190px; margin-right: 80px;" class="new-btn new-btn-reflect new-btn-bg1"
+        (click)="onOcrClick($event, 1)">
+        <ion-row style="padding: 10px 40px; align-items: center;">
+          <ion-icon ion-col col-35 name="idcard2" style="font-size: 8rem;"></ion-icon>
+          <div ion-col>
+            <p>一代身份证</p>
+            <p>(无电子芯片)</p>
+          </div>
+        </ion-row>
+      </button>
+
+      <button style="width: 320px; height: 190px; margin-right: 80px;" class="new-btn new-btn-reflect new-btn-bg2"
+        (click)="onOcrClick($event, 2)">
+        <ion-row style="padding: 10px 40px; align-items: center;">
+          <ion-icon ion-col col-35 name="pp" style="font-size: 8rem;"></ion-icon>
+          <div ion-col>
+            <p>护照</p>
+          </div>
+        </ion-row>
+      </button>
+
+      <button style="width: 360px; height: 190px; margin-right: 80px;" class="new-btn new-btn-reflect new-btn-bg3"
+        (click)="onOcrClick($event, 3)">
+        <ion-row style="padding: 10px 40px; align-items: center;">
+          <ion-icon ion-col col-35 name="jz2" style="font-size: 8rem;"></ion-icon>
+          <div ion-col>
+            <p>驾驶证</p>
+          </div>
+        </ion-row>
+      </button>
+
+      <button style="width: 360px; height: 190px; margin-right: 80px;" class="new-btn new-btn-reflect new-btn-bg1"
+        (click)="onOcrClick($event, 4)">
+        <ion-row style="padding: 10px 40px; align-items: center;">
+          <ion-icon ion-col col-35 name="nfc" style="font-size: 8rem;"></ion-icon>
+          <div ion-col>
+            <p>RFIC卡</p>
+          </div>
+        </ion-row>
+      </button>
+    </div>
+
+    <div xy-center style="flex: none; flex-direction: column; margin-top: 100px;">
+      <ion-icon style="font-size: 14rem; color: #0e59a4;" name="swipe-card"></ion-icon>
+      <p style="font-size: 3rem;" class="my-text">&nbsp;支持自动读取二代身份证</p>
+    </div>
+  </div>
+
+  <div class="footer" style="height: 210px; flex-direction: column;">
+    <fieldset style="width: 100%; background: rgba(250, 250, 255, 0.5);">
+      <legend>帮助信息</legend>
+
+      <div class="fieldset-content" style="font-size: 3rem;">
+        <p class="mytext">1. 如果您使用一代身份证，或者护照和驾驶证进行登记，请点击上方按钮选择正确的证件类别进行识别。</p>
+        <p class="mytext">2. 如果您使用二代身份证，请将身份证放置于证件阅读区，系统会自动读取信息并进行下一步操作。</p>
+      </div>
+    </fieldset>
+  </div>
+</ion-content>

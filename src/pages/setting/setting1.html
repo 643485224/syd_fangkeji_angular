@@ -1,0 +1,175 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>系统设置 - 模式配置</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="bgurl | safe: 'url'">
+
+  <div style="width: 100%; height: 100%" padding>
+    <fieldset style="background: rgba(255, 255, 255, 0.4);">
+      <legend>模式配置</legend>
+
+      <ion-row style="padding: 6px 20px; margin: 0.5rem 1rem;">
+        <ion-item ion-col>
+          <ion-label>
+            <ion-icon name="offline" color="danger"></ion-icon>
+            &nbsp;脱机模式
+          </ion-label>
+          <ion-toggle [(ngModel)]="offline"></ion-toggle>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label>
+            <ion-icon name="database" color="danger"></ion-icon>
+            &nbsp;使用外部数据库
+          </ion-label>
+          <ion-toggle [(ngModel)]="extdb"></ion-toggle>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label>
+            <ion-icon name="gpu" color="danger"></ion-icon>
+            &nbsp;使能硬件加速
+          </ion-label>
+          <ion-toggle [(ngModel)]="accelerated"></ion-toggle>
+        </ion-item>
+      </ion-row>
+
+      <ion-row style="padding: 6px 20px; margin: 0.5rem 1rem;">
+        <ion-item ion-col>
+          <ion-label color="dark">
+            <ion-icon name="browser" color="danger"></ion-icon>
+            &nbsp;WebView 实现
+          </ion-label>
+
+          <ion-select #selWebView [(ngModel)]="webview" cancelText="取消" okText="确认">
+            <ion-option [value]="0">Crosswalk WebView</ion-option>
+            <ion-option [value]="1">System WebView</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="dark" style="margin-left: 3rem;">
+            <ion-icon name="pp5" color="danger"></ion-icon>
+            &nbsp;存在电子护照模块
+          </ion-label>
+          <ion-toggle [(ngModel)]="exist_epm"></ion-toggle>
+        </ion-item>
+      </ion-row>
+
+      <ion-row style="padding: 6px 20px; margin: 0.5rem 1rem;">
+        <ion-item ion-col>
+          <ion-label color="dark">
+            <ion-icon name="key3" color="danger"></ion-icon>
+            &nbsp;加密密钥
+          </ion-label>
+          <ion-input placeholder="平台密钥" maxlength="32" [(ngModel)]="enckey" style="ime-mode:disabled"></ion-input>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="dark" style="margin-left: 3rem;">
+            <ion-icon name="shezhi3" color="danger"></ion-icon>
+            &nbsp;调试模式
+          </ion-label>
+          <ion-toggle [(ngModel)]="debug_mode"></ion-toggle>
+        </ion-item>
+      </ion-row>
+    </fieldset>
+
+    <fieldset [disabled]="offline" style="background: rgba(255, 255, 255, 0.4);">
+      <legend>平台配置</legend>
+
+      <ion-row style="width: 100%; margin: 0.5rem 1rem; padding-right: 1rem;">
+        <ion-col>
+          <ion-row style="padding: 6px 20px;">
+            <ion-col>
+              <ion-item (click)="onTextClick(1)">
+                <ion-label [color]="clr1">
+                  <ion-icon name="config-ip" color="secondary"></ion-icon>
+                  &nbsp;IP地址
+                </ion-label>
+                <ion-input placeholder="平台IP地址" readonly [(ngModel)]="ip"></ion-input>
+              </ion-item>
+
+              <ion-item (click)="onTextClick(2)">
+                <ion-label [color]="clr2">
+                  <ion-icon name="port" color="secondary"></ion-icon>
+                  &nbsp;端&nbsp;&nbsp;&nbsp;&nbsp;口
+                </ion-label>
+                <ion-input placeholder="平台端口号" readonly [(ngModel)]="port"></ion-input>
+              </ion-item>
+
+              <ion-item (click)="onTextClick(3)">
+                <ion-label [color]="clr3">
+                  <ion-icon name="code1" color="secondary"></ion-icon>
+                  &nbsp;注册码
+                </ion-label>
+                <ion-input placeholder="设备注册码" readonly [(ngModel)]="regcode"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <ion-col col-auto>
+          <div>
+            <div class="key-row">
+              <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('1')">1</button>
+              <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('2')">2</button>
+              <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('3')">3</button>
+              <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('0')">0</button>
+            </div>
+
+            <div class="key-row">
+              <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('4')">4</button>
+              <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('5')">5</button>
+              <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('6')">6</button>
+
+              <div *ngIf="keyMode === 1; then thenBlock1; else elseBlock1"></div>
+              <ng-template #thenBlock1>
+                <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only
+                  (click)="onNumDown('.')">.</button>
+              </ng-template>
+              <ng-template #elseBlock1>
+                <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only (click)="onBackspace()">
+                  <ion-icon name="tuige"></ion-icon>
+                </button>
+              </ng-template>
+            </div>
+
+            <div class="key-row">
+              <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('7')">7</button>
+              <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('8')">8</button>
+              <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('9')">9</button>
+              <div *ngIf="keyMode === 1; then thenBlock2; else elseBlock2"></div>
+              <ng-template #thenBlock2>
+                <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only (click)="onBackspace()">
+                  <ion-icon name="tuige"></ion-icon>
+                </button>
+              </ng-template>
+              <ng-template #elseBlock2>
+                <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only (click)="onClean()"
+                  style="font-size: 2.8rem;">
+                  <ion-icon name="close2"></ion-icon>
+                </button>
+              </ng-template>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </fieldset>
+  </div>
+
+  <div class="footer">
+    <button ion-button icon-start lg2-btn class="mybtn mybtn-rounded mybtn-raised mybtn-royal" (click)="onSave($event)">
+      <ion-icon name="save" color="light"></ion-icon>
+      保存本页设置
+    </button>
+  </div>
+</ion-content>

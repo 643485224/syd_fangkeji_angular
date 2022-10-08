@@ -1,0 +1,125 @@
+<div class="tv-pagectrl" [hidden]="pageshow === 0">
+</div>
+
+<div class="tv-content">
+  <div class="tv-header">
+    <table #tvHeader>
+      <!-- 表头 -->
+      <thead>
+        <tr bg-font="">
+          <!-- 复选框部分 -->
+          <th *ngIf="multiple" style="width: 40px;">
+            <div *ngIf="allChecked; then thenBlock; else elseBlock"></div>
+
+            <ng-template #thenBlock="">
+              <div class="check-box-checked" (click)="checkboxAll_click($event)">
+                <div class="item"></div>
+              </div>
+            </ng-template>
+
+            <ng-template #elseBlock="">
+              <div class="check-box" (click)="checkboxAll_click($event)">
+              </div>
+            </ng-template>
+          </th>
+
+          <!-- 表头 -->
+          <th *ngFor="let header of table.headers" [ngStyle]="header.style">{{header.title}}</th>
+        </tr>
+      </thead>
+    </table>
+
+    <div class="tv-mend" #tvMend></div>
+  </div>
+
+  <div class="tv-body tv-sb">
+    <!-- table-layout: fixed; -->
+    <table #tvBody>
+      <tbody>
+        <!-- 循环每一行 -->
+        <ng-template ngFor let-row [ngForOf]="table.rows">
+          <div *ngIf="row; then thenBlock; else elseBlock"></div>
+
+          <ng-template #thenBlock="">
+            <!-- 表格主体 row -->
+
+            <tr [ngClass]="getItemClass(row)">
+              <!-- 复选框部分 -->
+              <td *ngIf="multiple">
+                <div *ngIf="row.checked; then thenBlock2; else elseBlock2"></div>
+
+                <ng-template #thenBlock2="">
+                  <div class="check-box-checked" (click)="checkbox_click($event, row)">
+                    <div class="item"></div>
+                  </div>
+                </ng-template>
+
+                <ng-template #elseBlock2="">
+                  <div class="check-box" (click)="checkbox_click($event, row)"></div>
+                </ng-template>
+              </td>
+
+              <!-- 表格主体 根据表头循环列 -->
+              <ng-template ngFor let-header [ngForOf]="table.headers">
+                <td [ngStyle]="{ 'width' : header.width }">
+                  <!-- 判断当前行是否存在指定列的内容 -->
+                  <div *ngIf="findColumn(row, header.name) >= 0; then thenBlock3; else elseBlock3"></div>
+
+                  <!-- 当前行存在指定列 -->
+                  <ng-template #thenBlock3="">
+                    <div class="div-cell" [ngSwitch]="getColumn(row, header.name).type">
+                      <!-- 文本 -->
+                      <div *ngSwitchCase="1" (click)="cell_onClickStub($event, row, getColumn(row, header.name))"
+                        (dblclick)="cell_onDblClickStub($event, row, getColumn(row, header.name))">
+                        <div [ngStyle]="getColumn(row, header.name).style">
+                          {{getColumn(row, header.name).text}}
+                        </div>
+                      </div>
+
+                      <!-- 数字 -->
+                      <div *ngSwitchCase="2" (click)="cell_onClickStub($event, row, getColumn(row, header.name))"
+                        (dblclick)="cell_onDblClickStub($event, row, getColumn(row, header.name))">
+                        {{getColumn(row, header.name).text}}
+                      </div>
+
+                      <!-- 按钮组 -->
+                      <div *ngSwitchCase="101" use-bootstrap>
+                        <ng-template ngFor let-btnitem [ngForOf]="getButtons(row, header.name)">
+                          <button class="btn btn-info" (click)="button_onClickStub($event, btnitem)">{{btnitem.title}}</button>
+                        </ng-template>
+                      </div>
+
+                      <!-- 图片 -->
+                      <div *ngSwitchCase="102" (dblclick)="cell_onDblClickStub($event, row, getColumn(row, header.name))">
+                        <img [src]="getColumn(row, header.name).text">
+                      </div>
+
+                      <!-- 链接 -->
+                      <div *ngSwitchCase="103">
+                        <a href="javascript:;" [ngStyle]="getColumn(row, header.name).style" (click)="cell_onClickStub($event, row, getColumn(row, header.name))">
+                          {{getColumn(row, header.name).text}}
+                        </a>
+                      </div>
+
+                      <div *ngSwitchDefault="">&nbsp;</div>
+                    </div>
+                  </ng-template>
+
+                  <!-- 当前行不存在指定列 -->
+                  <ng-template #elseBlock3="">&nbsp;</ng-template>
+                </td>
+              </ng-template>
+            </tr>
+          </ng-template>
+
+          <ng-template #elseBlock="">
+            <tr>
+              <td colspan="999999">&nbsp;</td>
+            </tr>
+          </ng-template>
+        </ng-template>
+
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>查看详情</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'">
+
+  <div y-scroll>
+    <div padding xy-center style="height: auto; flex-direction: column;">
+      <ion-row style="width: 100%;">
+        <fieldset style="background-color: rgba(250, 250, 250, 0.6);">
+          <legend>来访记录详情</legend>
+          <ion-row>
+            <ion-item ion-col col-30>
+              <ion-label color="danger">访客姓名</ion-label>
+              <ion-input [value]="v_name" readonly></ion-input>
+            </ion-item>
+            <ion-item ion-col col-20>
+              <ion-label color="danger">访客性别</ion-label>
+              <ion-input [value]="v_sex" readonly></ion-input>
+            </ion-item>
+            <ion-item ion-col col-20>
+              <ion-label color="danger">访客民族</ion-label>
+              <ion-input [value]="v_folk" readonly></ion-input>
+            </ion-item>
+            <ion-item ion-col col-30>
+              <ion-label color="danger">访客手机</ion-label>
+              <ion-input [value]="v_mobile" readonly></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item ion-col>
+              <ion-label color="danger">访客地址</ion-label>
+              <ion-input [value]="v_addr" readonly></ion-input>
+            </ion-item>
+
+            <ion-item ion-col>
+              <ion-label color="danger">访客单位</ion-label>
+              <ion-input [value]="v_company" readonly></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item ion-col>
+              <ion-label color="danger">证件类型</ion-label>
+              <ion-input [value]="credType" readonly></ion-input>
+            </ion-item>
+            <ion-item ion-col>
+              <ion-label color="danger">证件号码</ion-label>
+              <ion-input [value]="credNum" readonly></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item ion-col col-25>
+              <ion-label color="danger">被访人姓名</ion-label>
+              <ion-input [value]="s_name" readonly></ion-input>
+            </ion-item>
+            <ion-item ion-col col-25>
+              <ion-label color="danger">被访人性别</ion-label>
+              <ion-input [value]="s_sex" readonly></ion-input>
+            </ion-item>
+            <ion-item ion-col col-25>
+              <ion-label color="danger">被访人工号</ion-label>
+              <ion-input [value]="s_jobNum" readonly></ion-input>
+            </ion-item>
+            <ion-item ion-col col-25>
+              <ion-label color="danger">被访人手机</ion-label>
+              <ion-input [value]="s_mobile" readonly></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item ion-col col-25>
+              <ion-label color="danger">被访人公司</ion-label>
+              <ion-input [value]="s_company" readonly></ion-input>
+            </ion-item>
+            <ion-item ion-col col-25>
+              <ion-label color="danger">被访人部门</ion-label>
+              <ion-input [value]="s_dept" readonly></ion-input>
+            </ion-item>
+            <ion-item ion-col col-25>
+              <ion-label color="danger">来访事由</ion-label>
+              <ion-input [value]="reason" readonly></ion-input>
+            </ion-item>
+            <ion-item ion-col col-25>
+              <ion-label color="danger">车牌号码</ion-label>
+              <ion-input [value]="plateNum" readonly></ion-input>
+            </ion-item>
+
+          </ion-row>
+          <ion-row>
+            <ion-item ion-col col-26>
+              <ion-label color="danger">来访状态</ion-label>
+              <ion-input [value]="state" readonly></ion-input>
+            </ion-item>
+            <ion-item ion-col>
+              <ion-label color="danger">来访时间</ion-label>
+              <ion-input [value]="visit_time" readonly></ion-input>
+            </ion-item>
+            <ion-item ion-col>
+              <ion-label color="danger">签离时间</ion-label>
+              <ion-input [value]="leave_time" readonly></ion-input>
+            </ion-item>
+          </ion-row>
+        </fieldset>
+      </ion-row>
+      <ion-row style="width: 100%; height: 460px;">
+        <fieldset ion-col style="background-color: rgba(250, 250, 250, 0.6); margin-right: 6px;">
+          <legend>头像照片</legend>
+          <div style="width: 100%; height: calc(100% - 54px);" *ngIf="strBmpHead">
+            <img style="width: 100%; height: 100%; object-fit: fill;" [src]="strBmpHead | safe: 'url'" />
+          </div>
+        </fieldset>
+        <fieldset ion-col style="background-color: rgba(250, 250, 250, 0.6);margin-right: 6px;">
+          <legend>证件照片</legend>
+          <div style="width: 100%; height: calc(100% - 54px);" *ngIf="strBmpCred">
+            <img style="width: 100%; height: 100%; object-fit: fill;" [src]="strBmpCred | safe: 'url'" />
+          </div>
+        </fieldset>
+        <fieldset ion-col style="background-color: rgba(250, 250, 250, 0.6);">
+          <legend>现场照片</legend>
+          <div style="width: 100%; height: calc(100% - 54px);" *ngIf="strBmpSite">
+            <img style="width: 100%; height: 100%; object-fit: fill;" [src]="strBmpSite | safe: 'url'" />
+          </div>
+        </fieldset>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

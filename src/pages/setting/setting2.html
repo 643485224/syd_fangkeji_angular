@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>系统设置 - 修改管理密码</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding no-scroll>
+  <fieldset>
+    <legend>修改密码</legend>
+    <ion-row style="width: 100%; margin: 0.5rem 1rem; padding-right: 1rem;">
+      <ion-col>
+        <ion-row style="padding: 6px 20px;">
+          <ion-col>
+            <ion-item (click)="onTextClick(1)">
+              <ion-label [color]="clr1">
+                <ion-icon name="pwd3" color="secondary"></ion-icon>
+                &nbsp;当前密码
+              </ion-label>
+              <ion-input type="password" maxlength="8" placeholder="当前管理密码" readonly [(ngModel)]="curPwd"></ion-input>
+            </ion-item>
+
+            <ion-item (click)="onTextClick(2)">
+              <ion-label [color]="clr2">
+                <ion-icon name="pwd2" color="secondary"></ion-icon>
+                &nbsp;新的密码
+              </ion-label>
+              <ion-input type="password" maxlength="8" placeholder="新的管理密码" readonly [(ngModel)]="pwd1"></ion-input>
+            </ion-item>
+
+            <ion-item (click)="onTextClick(3)">
+              <ion-label [color]="clr3">
+                <ion-icon name="pwd2" color="secondary"></ion-icon>
+                &nbsp;确认密码
+              </ion-label>
+              <ion-input type="password" maxlength="8" placeholder="再次输入管理密码" readonly [(ngModel)]="pwd2"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <ion-col col-auto>
+        <div class="key-row">
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('1')">1</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('2')">2</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('3')">3</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('0')">0</button>
+        </div>
+
+        <div class="key-row">
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('4')">4</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('5')">5</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('6')">6</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only (click)="onBackspace()">
+            <ion-icon name="tuige"></ion-icon>
+          </button>
+        </div>
+
+        <div class="key-row">
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('7')">7</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('8')">8</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" (click)="onNumDown('9')">9</button>
+          <button ion-button class="mybtn mybtn-raised mybtn-primary" icon-only (click)="onClean()"
+            style="font-size: 2.8rem;">
+            <ion-icon name="close2"></ion-icon>
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </fieldset>
+
+  <div class="footer">
+    <button ion-button icon-start lg2-btn class="mybtn mybtn-rounded mybtn-raised mybtn-royal" (click)="onSave($event)">
+      <ion-icon name="save" color="light"></ion-icon>
+      保存本页设置
+    </button>
+  </div>
+</ion-content>

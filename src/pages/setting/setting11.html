@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>系统设置 - 凭条样式</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'" />
+
+  <div style="width: 100%; height: 100%" padding>
+    <fieldset style="background: rgba(255, 255, 255, 0.4);">
+      <legend>打印凭条样式设置 {{strRemark}}</legend>
+
+      <ion-row style="padding: 6px 20px; margin: 0.5rem 1rem;">
+        <ion-item ion-col>
+          <ion-label color="primary">凭条样式: </ion-label>
+          <ion-select #selStyle [(ngModel)]="formStyle" okText="确认" cancelText="取消">
+            <ng-template ngFor let-item [ngForOf]="listStyle">
+              <ion-option [value]="item.id">{{item.name}}</ion-option>
+            </ng-template>
+          </ion-select>
+        </ion-item>
+
+        <ion-item ion-col>
+          <ion-label color="primary">二维码尺寸: </ion-label>
+          <ion-select #selSize [(ngModel)]="qrcodeSize" okText="确认" cancelText="取消">
+            <ng-template ngFor let-item [ngForOf]="listSize">
+              <ion-option [value]="item.size">{{item.name}}</ion-option>
+            </ng-template>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+    </fieldset>
+  </div>
+
+  <div class="footer">
+    <button ion-button icon-start lg2-btn class="mybtn mybtn-rounded mybtn-raised mybtn-royal" (click)="onSave($event)">
+      <ion-icon name="save" color="light"></ion-icon>
+      保存本页设置
+    </button>
+  </div>
+</ion-content>

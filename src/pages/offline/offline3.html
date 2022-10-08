@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-buttons left class="fix-toolbar-btn">
+      <button ion-button (tap)="Back($event)">
+        <ion-icon name="fanhui" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>访客登记 - 选择被访人</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-scroll>
+  <img class="bg-picture" [src]="globalSvr.background | safe: 'url'">
+
+  <div y-center padding style="height: 100%; flex-direction: column;">
+    <div style="width: 100%; height: 190px;">
+      <fieldset>
+        <legend>查询被访人</legend>
+        <ion-row>
+          <ion-col style="padding-top: 0px;">
+            <ion-row style="padding: 8px 10px 2px 4px;">
+              <ion-item ion-col>
+                <ion-label color="light">姓名</ion-label>
+                <ion-input [(ngModel)]="strName" maxlength="20"></ion-input>
+              </ion-item>
+
+              <ion-item ion-col>
+                <ion-label color="light">手机</ion-label>
+                <ion-input [(ngModel)]="strPhone" maxlength="20"></ion-input>
+              </ion-item>
+
+              <ion-item ion-col>
+                <ion-label color="light">工号</ion-label>
+                <ion-input [(ngModel)]="strJobNum" maxlength="20"></ion-input>
+              </ion-item>
+            </ion-row>
+          </ion-col>
+
+          <ion-col col-auto style="padding-top: 0px;">
+            <button search-btn ion-button icon-start large class="mybtn mybtn-rounded mybtn-raised mybtn-royal"
+              (click)="onQuery($event)">
+              <ion-icon name="find2" color="light"></ion-icon>
+              搜索被访人
+            </button>
+          </ion-col>
+        </ion-row>
+
+      </fieldset>
+    </div>
+
+    <fieldset style="width: 100%; height: calc(100% - 190px);">
+      <legend>搜索结果</legend>
+
+      <ion-row style="height: 74px; padding: 2px 14px;">
+        <button style="margin-right: 10px; padding: 8px 22px;" ion-col col-auto ion-button large (click)="onPageCtrl(1)"
+          [disabled]="pageNum <= 1">上一页</button>
+        <button style="margin-right: 10px; padding: 8px 22px;" ion-col col-auto ion-button large (click)="onPageCtrl(2)"
+          [disabled]="pageNum >= pageMax">下一页</button>
+        <p ion-col>当前{{ pageNum }} / {{ pageMax }}页，一共{{ count }}条员工数据</p>
+      </ion-row>
+
+      <tableview #tableView></tableview>
+    </fieldset>
+  </div>
+</ion-content>

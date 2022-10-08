@@ -1,0 +1,20 @@
+现场登记：
+  OCR证件
+  确认访客信息  2
+  查询被访人    3
+  人脸抓拍      4
+
+
+单机登记:
+  OCR证件
+  完善信息
+
+
+
+SQLPLUGIN:
+1. sqlplugin -> corova.exec
+          cordova.exec(function(winParam) {},
+                 function(error) {},
+                 "service",
+                 "action",
+                 ["firstArgument", "secondArgument", 42, false]);

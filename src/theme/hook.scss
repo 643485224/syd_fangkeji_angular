@@ -1,0 +1,147 @@
+$toolbar-height: 84px;
+$global-font-size: 2.8rem;
+$font-size-md-base: 2.8rem;
+$item-md-body-text-font-size: 2.8rem;
+$item-md-font-size: 2.8rem;
+$popover-md-width: auto;
+$bar-icon-button-size: 3.8rem;
+$loading-md-max-width: 640px;
+$grid-columns: 100;
+
+body .toolbar-md,
+body .toolbar-wp {
+  padding: 4px 4px 4px 0px !important;
+  min-height: $toolbar-height !important;
+  height: $toolbar-height !important;
+  font-size: 2.6rem !important;
+}
+
+
+body .select-alert .alert-wrapper {
+  max-width: 960px !important;
+
+  .alert-head {
+    height: 64px !important;
+    border-bottom: 1px solid #aaa !important;
+
+    .alert-title {
+      font-size: 2.8rem !important;
+    }
+  }
+
+  .alert-radio-group {
+    .alert-radio-icon {
+      width: 22px !important;
+      height: 22px !important;
+
+      .alert-radio-inner {
+        left: 4px !important;
+        top: 4px !important;
+        width: 10px !important;
+        height: 10px !important;
+      }
+    }
+  }
+
+  .alert-button-group {
+    height: 76px !important;
+
+    button {
+      padding: 1rem 3rem !important;
+      background-color: #58b2f0 !important;
+      font-size: 2.6rem !important;
+      color: #fff !important;
+    }
+
+    button:active {
+      background-color: #186094 !important;
+    }
+  }
+}
+
+body button:focus {
+  outline: none;
+}
+
+body {
+
+  address,
+  dl,
+  ol,
+  p,
+  pre,
+  ul {
+    margin-bottom: 0;
+  }
+}
+
+.toolbar .bar-button-md {
+  width: 100%;
+  padding-left: 10px !important;
+  margin: 0px 4px 0px 0px !important;
+}
+
+.toolbar .bar-button-md .icon-md {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.toolbar .back-button-md {
+  width: 8rem;
+  text-align: center;
+  height: $toolbar-height !important;
+  user-select: none;
+  padding-left: 10px !important;
+  margin: 0px 4px 0px 0px !important;
+}
+
+.toolbar .back-button-icon-md {
+  text-align: center;
+  font-size: $bar-icon-button-size + 0.4rem !important;
+  margin-bottom: 4px !important;
+  color: #488aff;
+}
+
+fixed-content,
+scroll-content {
+  margin-top: $toolbar-height !important;
+}
+
+body .toolbar-title-md,
+body .toolbar-title-wp {
+  font-size: 3.2rem;
+}
+
+body .alert-md .alert-head {
+  background: linear-gradient(#fff, #ddd);
+  text-align: start;
+  padding: 14px 22px;
+  font-size: 3.4rem;
+}
+
+body .alert-md .alert-wrapper {
+  max-width: 720px;
+}
+
+body .alert-md .alert-message {
+  max-height: 320px;
+  font-size: 3rem;
+  padding: 12px 24px 24px 24px;
+}
+
+body .alert-md .alert-button-group {
+  height: 64px;
+}
+
+ion-buttons .bar-button-md {
+  font-size: $bar-icon-button-size !important;
+  height: $toolbar-height !important;
+}
+
+ion-buttons .bar-button-md[icon-only] ion-icon {
+  font-size: 3.0rem;
+}
+
+#__vconsole {
+  font-size: 2.0rem !important;
+}
